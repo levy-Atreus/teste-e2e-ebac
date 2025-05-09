@@ -1,20 +1,26 @@
 [
     {
-      "nomeProduto": "Aero Daily Fitness Tee",
-      "tamanho": "M",
-      "cor": "black",
+      "nomeProduto": "Josie Yoga Jacket",
+      "tamanho": "XS",
+      "cor": "Black",
       "quantidade": 1
     },
     {
-      "nomeProduto": "Aero Daily Fitness Tee",
-      "tamanho": "M",
-      "cor": "Brown",
+      "nomeProduto": "Augusta Pullover Jacket",
+      "tamanho": "XS",
+      "cor": "Blue",
       "quantidade": 1
     },
     {
-      "nomeProduto": "Aero Daily Fitness Tee",
-      "tamanho": "M",
-      "cor": "yellow",
+      "nomeProduto": "Ingrid Running Jacket",
+      "tamanho": "XL",
+      "cor": "Orange",
+      "quantidade": 1
+    },
+    {
+      "nomeProduto": "Stellar Solar Jacket",
+      "tamanho": "S",
+      "cor": "Yellow",
       "quantidade": 1
     }
   ]
