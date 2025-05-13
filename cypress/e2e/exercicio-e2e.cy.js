@@ -26,7 +26,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                 dadosProdutos[1].cor,
                 dadosProdutos[1].quantidade
             );
-            /*cy.get('.woocommerce-message > .button').click();
+            cy.get('.woocommerce-message > .button').click();
             produtosPage.buscarProduto(dadosProdutos[2].nomeProduto);
             produtosPage.addProdutoCarrinho(
                 dadosProdutos[2].tamanho,
@@ -46,12 +46,11 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                 dadosProdutos[0].tamanho,
                 dadosProdutos[0].cor,
                 dadosProdutos[0].quantidade
-            );*/
+            );
 
             cy.get('.woocommerce-message > .button').click();
             cy.get('.checkout-button').first().click();
             
-             // Carregando os dados do fixture 'endereco'
             cy.fixture('endereco').then(dadosEndereco => {
 
                 const endereco = dadosEndereco.endereco;
@@ -69,7 +68,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                 cy.get('#terms').click();
                 cy.get('#place_order').click();
                 cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
-                //cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
+            
             });
         });
     });
