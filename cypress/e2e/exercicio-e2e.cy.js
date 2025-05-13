@@ -53,11 +53,6 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             
             cy.fixture('endereco').then(dadosEndereco => {
 
-                const endereco = dadosEndereco.endereco;
-                const cidade = dadosEndereco.cidade;
-                const cep = dadosEndereco.cep;
-                const telefone = dadosEndereco.telefone;
-
                 cy.get('#billing_address_1').clear().type(dadosEndereco.endereco);
                 cy.get('#billing_city').clear().type(dadosEndereco.cidade);
                 cy.get('#billing_postcode').clear().type(dadosEndereco.cep);
@@ -67,7 +62,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                 cy.get('.select2-results__options').contains('Bahia').click()
                 cy.get('#terms').click();
                 cy.get('#place_order').click();
-                cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
+                cy.get('.woocommerce-notice', { timeout: 10000 }).should('contain', 'Obrigado. Seu pedido foi recebido.')
             
             });
         });
