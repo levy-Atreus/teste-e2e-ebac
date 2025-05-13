@@ -20,50 +20,57 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
         cy.fixture('produtos').then(dadosProdutos => {
-            // Adiciona o primeiro produto ao carrinho
             produtosPage.buscarProduto(dadosProdutos[1].nomeProduto);
             produtosPage.addProdutoCarrinho(
                 dadosProdutos[1].tamanho,
                 dadosProdutos[1].cor,
                 dadosProdutos[1].quantidade
             );
-            cy.get('.woocommerce-message > .button').click(); // Vai para o carrinho ou continua comprando
-
-            // Adiciona o segundo produto ao carrinho
+            /*cy.get('.woocommerce-message > .button').click();
             produtosPage.buscarProduto(dadosProdutos[2].nomeProduto);
             produtosPage.addProdutoCarrinho(
                 dadosProdutos[2].tamanho,
                 dadosProdutos[2].cor,
                 dadosProdutos[2].quantidade
             );
-            cy.get('.woocommerce-message > .button').click(); // Vai para o carrinho ou continua comprando
-
-            // Adiciona o terceiro produto ao carrinho
+            cy.get('.woocommerce-message > .button').click();
             produtosPage.buscarProduto(dadosProdutos[3].nomeProduto);
             produtosPage.addProdutoCarrinho(
                 dadosProdutos[3].tamanho,
                 dadosProdutos[3].cor,
                 dadosProdutos[3].quantidade
             );
-            cy.get('.woocommerce-message > .button').click(); // Vai para o carrinho ou continua comprando
-
-            // Adiciona o quarto produto (você estava repetindo o terceiro)
-            produtosPage.buscarProduto(dadosProdutos[0].nomeProduto); // Assumindo que você queria o índice 0 para o quarto produto
+            cy.get('.woocommerce-message > .button').click();
+            produtosPage.buscarProduto(dadosProdutos[0].nomeProduto);
             produtosPage.addProdutoCarrinho(
                 dadosProdutos[0].tamanho,
                 dadosProdutos[0].cor,
                 dadosProdutos[0].quantidade
-            );
-            cy.get('.woocommerce-message > .button').click(); // Vai para o carrinho
+            );*/
 
-            // Segue para o checkout (agora deve ser chamado apenas uma vez)
+            cy.get('.woocommerce-message > .button').click();
             cy.get('.checkout-button').first().click();
+            
+             // Carregando os dados do fixture 'endereco'
+            cy.fixture('endereco').then(dadosEndereco => {
 
-            // TODO: Preencher os dados do checkout
-            // ...
+                const endereco = dadosEndereco.endereco;
+                const cidade = dadosEndereco.cidade;
+                const cep = dadosEndereco.cep;
+                const telefone = dadosEndereco.telefone;
 
-            // TODO: Validar a compra ao final
-            // ...
+                cy.get('#billing_address_1').clear().type(dadosEndereco.endereco);
+                cy.get('#billing_city').clear().type(dadosEndereco.cidade);
+                cy.get('#billing_postcode').clear().type(dadosEndereco.cep);
+                cy.get('#billing_phone').clear().type(dadosEndereco.telefone);
+                cy.get('#select2-billing_state-container').click()
+                cy.get('.select2-search__field').type('BA').click
+                cy.get('.select2-results__options').contains('Bahia').click()
+                cy.get('#terms').click();
+                cy.get('#place_order').click();
+                cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
+                //cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
+            });
         });
     });
 });

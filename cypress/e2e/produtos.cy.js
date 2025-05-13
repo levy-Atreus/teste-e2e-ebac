@@ -53,7 +53,6 @@ describe('Funcionalidade: Produtos', () =>
   });
 
   it('deve acicionar o produto ao carrinho de forma simples', () => {
-    //produtosPage.buscarProduto('Josie Yoga Jacket')
     
     cy.get('.button-variable-item-S').click()
     cy.get('.button-variable-item-Blue').click()
@@ -67,14 +66,13 @@ describe('Funcionalidade: Produtos', () =>
   describe('Fluxo de compra com login', () => {
     it.only('Deve adicionar produto ao carrinho com massa de dados após o login', () => {
       cy.fixture('produtos').then(dados => {
-        // **Passos de Login**
-        cy.visit('/minha-conta'); // Ou a URL da sua página de login
-        cy.get('#username').type('seu_usuario'); // Seletor do campo de usuário
-        cy.get('#password').type('sua_senha'); // Seletor do campo de senha
-        cy.get('button[name="login"]').click(); // Seletor do botão de login
-        cy.url().should('not.include', '/minha-conta'); // Asserção para verificar o login (redirecionamento)
+
+        cy.visit('/minha-conta');
+        cy.get('#username').type('seu_usuario');
+        cy.get('#password').type('sua_senha');
+        cy.get('button[name="login"]').click();
+        cy.url().should('not.include', '/minha-conta');
   
-        // **Passos para adicionar o produto ao carrinho (seu código existente)**
         produtosPage.buscarProduto(dados[1].nomeProduto)
         produtosPage.addProdutoCarrinho(
           dados[1].tamanho,
