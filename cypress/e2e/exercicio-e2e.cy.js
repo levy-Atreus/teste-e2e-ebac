@@ -60,6 +60,10 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                 cy.get('#select2-billing_state-container').click()
                 cy.get('.select2-search__field').type('BA').click
                 cy.get('.select2-results__options').contains('Bahia').click()
+                //para fazer sem login.
+                /*cy.get('#billing_first_name').clear().type(dadosEndereco.nome);
+                cy.get('#billing_last_name').clear().type(dadosEndereco.sobrenome);
+                cy.get('#billing_email').clear().type(dadosEndereco.email);*/
                 cy.get('#terms').click();
                 cy.get('#place_order').click();
                 cy.get('.woocommerce-notice', { timeout: 10000 }).should('contain', 'Obrigado. Seu pedido foi recebido.')

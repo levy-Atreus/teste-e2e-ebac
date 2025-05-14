@@ -1,6 +1,9 @@
 {
     "endereco": "Travessa do Xinxim Gostoso 123",
-    "cidade": "xiq xiq bahia",
+    "cidade": "xiq xiq",
     "cep": "47400-000",
-    "telefone": "73 9 8876-5432"
+    "telefone": "73 9 8876-5432",
+    "nome": "Levy",
+    "sobrenome": "Atreus",
+    "email": "Levy@eu.com"
 }
